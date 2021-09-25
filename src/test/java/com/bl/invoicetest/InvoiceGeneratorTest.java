@@ -14,9 +14,16 @@ public class InvoiceGeneratorTest {
     }
 
     @Test
-    public void givenDistanceAndTime_whenTotalFairIsLessThanMinimumFair_ShouldReturnMinimumFareElseTotalFair() {
+    public void givenDistanceAndTime_whenTotalFairIsLessThanMinimumFair_shouldReturnMinimumFareElseTotalFair() {
         double result = invoiceGenerator.generateInvoice(0.2, 2);
         Assert.assertEquals(5, result, 0.0);
+    }
+
+    @Test
+    public void givenMultipleRideDetails_whenRideIsMoreThanOne_shouldReturnAggregateTotalFare() {
+        Ride[] rides = { new Ride(5, 5), new Ride(50, 100) };
+        double result = invoiceGenerator.generateInvoice(rides);
+        Assert.assertEquals(655, result, 0.0);
     }
 
 }
