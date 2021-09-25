@@ -14,13 +14,15 @@ public class InvoiceGenerator {
         return totalFare;
     }
 
-    public double generateInvoice (Ride[] rides) {
+    public Invoice generateInvoice (Ride[] rides) {
         double totalFare = 0;
+        int totalRides = rides.length;
 
         for (Ride ride : rides) {
             totalFare += generateInvoice(ride.getDistance(), ride.getTime());
         }
-        return totalFare;
+        double avgFare = totalFare/totalRides;
+        return new Invoice(totalRides, totalFare, avgFare);
     }
 
 }

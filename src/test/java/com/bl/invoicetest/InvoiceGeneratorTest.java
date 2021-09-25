@@ -20,10 +20,10 @@ public class InvoiceGeneratorTest {
     }
 
     @Test
-    public void givenMultipleRideDetails_whenRideIsMoreThanOne_shouldReturnAggregateTotalFare() {
+    public void givenMultipleRideDetails_whenRideIsMoreThanOne_shouldReturnInvoiceWithTotalRidesTotalFareAndAverageFare() {
         Ride[] rides = { new Ride(5, 5), new Ride(50, 100) };
-        double result = invoiceGenerator.generateInvoice(rides);
-        Assert.assertEquals(655, result, 0.0);
+        Invoice invoice = invoiceGenerator.generateInvoice(rides);
+        Assert.assertEquals(new Invoice(2, 655, 327.5), invoice);
     }
 
 }
