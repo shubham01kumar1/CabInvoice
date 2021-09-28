@@ -1,5 +1,7 @@
 package com.bl.invoicetest;
 
+import java.util.List;
+
 public class InvoiceGenerator {
 
     private static final int COST_PER_KILOMETER = 10;
@@ -14,9 +16,12 @@ public class InvoiceGenerator {
         return totalFare;
     }
 
-    public Invoice generateInvoice (Ride[] rides) {
+    public Invoice generateInvoice (List<Ride> rides) {
+        if( rides == null) {
+            return new Invoice(0, 0, 0);
+        }
         double totalFare = 0;
-        int totalRides = rides.length;
+        int totalRides = rides.size();
 
         for (Ride ride : rides) {
             totalFare += generateInvoice(ride.getDistance(), ride.getTime());
