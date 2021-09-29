@@ -1,7 +1,5 @@
 package com.bl.invoicetest;
 
-import java.util.Objects;
-
 public class Invoice {
     private int totalRides;
     private double totalFare;
